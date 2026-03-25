@@ -3,7 +3,20 @@
 
     <!-- Custom PreHead code is injected here -->
     
-
+    <script>
+        // Force audio to resume on the first touch or click anywhere on the page
+        window.addEventListener('click', function() {
+            if (typeof g_WebAudioContext !== 'undefined' && g_WebAudioContext.state === 'suspended') {
+                g_WebAudioContext.resume();
+            }
+        }, { once: true });
+    
+        window.addEventListener('touchstart', function() {
+            if (typeof g_WebAudioContext !== 'undefined' && g_WebAudioContext.state === 'suspended') {
+                g_WebAudioContext.resume();
+            }
+        }, { once: true });
+    </script>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
